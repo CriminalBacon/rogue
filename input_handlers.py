@@ -2,7 +2,7 @@ from typing import Optional
 
 import tcod.event
 
-from actions import Action, EscapeAction, MovementAction
+from actions import Action, EscapeAction, MovementAction, GodModeAction
 
 
 class EventHandler(tcod.event.EventDispatch[Action]):
@@ -25,6 +25,9 @@ class EventHandler(tcod.event.EventDispatch[Action]):
 
         elif key == tcod.event.K_ESCAPE:
             action = EscapeAction()
+
+        elif key == tcod.event.K_g:
+            action = GodModeAction(switch=1)
 
         # No valid key was pressed
         return action

@@ -26,6 +26,14 @@ class EscapeAction(Action):
         raise SystemExit()
 
 
+class GodModeAction(Action):
+    def __init__(self, switch: int):
+        self.switch = switch
+
+    def perform(self, engine: Engine, entity: Entity) -> None:
+        entity.toggle_god_mode(self.switch)
+
+
 class MovementAction(Action):
     def __init__(self, dx: int, dy: int):
         super().__init__()
