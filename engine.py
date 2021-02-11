@@ -10,8 +10,7 @@ from input_handlers import EventHandler
 
 
 class Engine:
-    def __init__(self, entities: Set[Entity], event_handler: EventHandler, game_map: GameMap, player: Entity):
-        self.entities = entities
+    def __init__(self, event_handler: EventHandler, game_map: GameMap, player: Entity):
         self.event_handler = event_handler
         self.game_map = game_map
         self.player = player
@@ -43,15 +42,8 @@ class Engine:
         if self.player.is_god():
             self.game_map.god_mode_render(console)
 
-            for entity in self.entities:
-                console.print(entity.x, entity.y, entity.char, fg=entity.color)
-
         else:
             self.game_map.render(console)
-
-            for entity in self.entities:
-                if self.game_map.visible[entity.x, entity.y]:
-                    console.print(entity.x, entity.y, entity.char, fg=entity.color)
 
         context.present(console)
 
