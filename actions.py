@@ -35,6 +35,11 @@ class EscapeAction(Action):
         raise SystemExit()
 
 
+class WaitAction(Action):
+    def perform(self) -> None:
+        pass
+
+
 class GodModeAction(Action):
     def __init__(self, entity: Entity, switch: int):
         super().__init__(entity)
